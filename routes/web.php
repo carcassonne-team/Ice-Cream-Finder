@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name("home");
+
+Route::get('/maps', function () {
+    return view('maps.map');
 });
+
+Route::get('/test',fn() => view('dashboard'))->name('test')->middleware(['isClient','isSeller']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
