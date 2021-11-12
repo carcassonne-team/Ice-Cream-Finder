@@ -24,7 +24,7 @@ class User extends Authenticatable
         "name",
         "email",
         "password",
-        "role"
+        "role",
     ];
 
     /**
@@ -46,11 +46,11 @@ class User extends Authenticatable
         "email_verified_at" => "datetime",
     ];
 
-    public function userRole(){
-        if ($this->role == "seller"){
+    public function userRole()
+    {
+        if ($this->role === "seller") {
             return "seller";
-        } else {
-            return "client";
         }
+        return "client";
     }
 }

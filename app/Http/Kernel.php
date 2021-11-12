@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use App\Http\Middleware\isClientMiddleware;
-use App\Http\Middleware\isSellerMiddleware;
+use App\Http\Middleware\checkRoleMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,7 +66,6 @@ class Kernel extends HttpKernel
         "signed" => \Illuminate\Routing\Middleware\ValidateSignature::class,
         "throttle" => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         "verified" => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        "isClient" => isClientMiddleware::class,
-        "isSeller" => isSellerMiddleware::class
+        "checkRole" => checkRoleMiddleware::class,
     ];
 }

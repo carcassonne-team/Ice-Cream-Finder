@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("home");
+Route::get("/", fn() => view("welcome"))->name("home");
 
-Route::get('/maps', function () {
-    return view('maps.map');
-});
+Route::get("/maps", fn() => view("maps.map"));
 
-Route::get('/test',fn() => view('dashboard'))->name('test')->middleware(['isClient','isSeller']);
+Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get("/dashboard", fn() => view("dashboard"))->middleware(["auth"])->name("dashboard");
 
-require __DIR__.'/auth.php';
+require __DIR__ . "/auth.php";
