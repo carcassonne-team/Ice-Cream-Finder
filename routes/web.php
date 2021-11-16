@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", fn() => view("welcome"))->name("home");
+Route::get("/", fn() => view("layout.homepage"))->name("home");
 
 Route::get("/maps", fn() => view("maps.map"));
 
