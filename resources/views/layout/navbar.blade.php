@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg custom_nav-container">
-    <a class="navbar-brand " href="index.html"> Ice Cream Finder </a>
+    <a class="navbar-brand " href="#"> Ice Cream Finder </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
     </button>
 
@@ -16,9 +17,32 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Products</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
+
+            @auth()
+                @if(auth()->user()->role == "seller")
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Shop</a>
+                    </li>
+                @endif
+
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            Log out
+                        </a>
+                    </form>
+                </li>
+            @endauth
+
+            @guest()
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">Sign in</a>
+                </li>
+            @endguest
+
         </ul>
     </div>
 </nav>
