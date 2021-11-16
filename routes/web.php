@@ -20,6 +20,7 @@ Route::get("/", fn() => view("layout.homepage"))->name("home");
 Route::get("/maps", fn() => view("maps.map"));
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");
+Route::get("/seller/add", fn() => view("seller.add"))->name("seller.add")->middleware("checkRole:seller");
 
 Route::get("/dashboard", fn() => view("dashboard"))->middleware(["auth"])->name("dashboard");
 

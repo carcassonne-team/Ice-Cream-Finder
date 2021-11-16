@@ -30,13 +30,12 @@
     <title>Document</title>
     <style>
         #map {
-            width: 100vw;
+            min-width: 55vw;
             height: 580px;
         }
     </style>
 </head>
 <body>
-@include('layout.navbar')
 <div class="map" id="map"></div>
 </body>
 </html>
@@ -47,8 +46,6 @@
     L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=2MMUGS8hqbPIC9Ja7nvk', {
         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
     }).addTo(map)
-
-    console.log(L.esri);
 
     var Icon = L.icon({
         iconUrl: '{{asset('ice.png')}}',
@@ -95,13 +92,15 @@
     let theMarker = {};
 
     map.on('click',(data) => {
+
         lat = data.latlng.lat;
-        lon = data.latlng.lng;
+        lng = data.latlng.lng;
 
         console.log({
             lat: data.latlng.lat,
             lng: data.latlng.lng,
         } );
+
 
         if (theMarker != undefined) {
             map.removeLayer(theMarker);
@@ -111,7 +110,7 @@
             map.removeLayer(results);
         }
 
-        theMarker = L.marker([lat,lon],{icon: Icon}).addTo(map);
+        theMarker = L.marker([lat,lng],{icon: Icon}).addTo(map);
     });
 
 </script>

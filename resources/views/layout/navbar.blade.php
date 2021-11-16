@@ -21,7 +21,7 @@
             @auth()
                 @if(auth()->user()->role == "seller")
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Shop</a>
+                        <a class="nav-link" href="{{route('seller.add')}}">Add Shop</a>
                     </li>
                 @endif
 
