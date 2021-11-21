@@ -83,6 +83,8 @@
     });
 
 
+    let theMarker = {};
+
     map.on('click',(data) => {
 
         lat = data.latlng.lat;

@@ -13,35 +13,46 @@
             </div>
             <div class="col-md-9">
                 <div class="contact-form">
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="fname">Shop Name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fname" placeholder="Enter Shop Name"
-                                   name="sname">
+                    <form id="form-add">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="fname">Shop Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="fname" placeholder="Enter Shop Name"
+                                       name="sname">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="photo">Photo:</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" id="photo" name="photo">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="photo">Photo:</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="photo" name="photo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="photo">Map:</label>
-                        <div class="col-sm-10">
-                            @include('maps.map')
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="photo">Map:</label>
+                            <div class="col-sm-10">
+                                @include('maps.map')
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group pt-5">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                        <div class="form-group pt-5">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default submitBtn">Submit</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+<script>
+    const form = document.querySelector('body')
+    console.log(form)
+    // form.addEventListener("submit",(e) => {
+    //     e.preventDefault()
+    //     console.log(e)
+    // })
+</script>
 
 <style>
     body {
