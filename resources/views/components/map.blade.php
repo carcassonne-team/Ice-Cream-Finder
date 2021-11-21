@@ -30,8 +30,8 @@
     <title>Document</title>
     <style>
         #map {
-            min-width: 55vw;
-            height: 580px;
+            width: 55vw;
+            height: 280px;
         }
     </style>
 </head>
@@ -41,7 +41,8 @@
 </html>
 
 <script>
-    const map = L.map('map').setView([16.69921875,47.754097979680026],2);
+    const geo = [{{$lat}},{{$lng}}];
+    const map = L.map('map').setView(geo,12);
 
     L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=2MMUGS8hqbPIC9Ja7nvk', {
         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
@@ -71,38 +72,13 @@
 
     var results = L.layerGroup().addTo(map);
 
-    searchControl.on('results', function (data) {
-        results.clearLayers();
-        for (var i = data.results.length - 1; i >= 0; i--) {
-            results.addLayer(L.marker(data.results[i].latlng,{icon: Icon}));
-        }
-        console.log({
-            lat: data.latlng.lat,
-            lng: data.latlng.lng,
-        });
-    });
+    const marker = L.marker(geo,{icon: Icon}).bindPopup(
+        '<img src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg" width="200px" height="200px"/> Shop name '
+    ).addTo(map)
 
+    marker.on('click',() => {
+        map.flyTo(geo,12);
+    })
 
-    map.on('click',(data) => {
-
-        lat = data.latlng.lat;
-        lng = data.latlng.lng;
-
-        console.log({
-            lat: data.latlng.lat,
-            lng: data.latlng.lng,
-        } );
-
-
-        if (theMarker != undefined) {
-            map.removeLayer(theMarker);
-        };
-
-        if(results){
-            map.removeLayer(results);
-        }
-
-        theMarker = L.marker([lat,lng],{icon: Icon}).addTo(map);
-    });
 
 </script>

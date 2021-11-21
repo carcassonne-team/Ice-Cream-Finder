@@ -1,7 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    color: #0c0c0c;
-    background-color: #ffffff;
+    background-color: #f26483;
     overflow-x: hidden;
 }
 
@@ -10,15 +9,16 @@ body {
     padding: 10vh;
 }
 
-
 .hero_area .hero_bg_box {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../hero-bg.jpg");
     overflow: hidden;
     z-index: -1;
+    background-color: #f26483;
 }
 
 .hero_area .hero_bg_box img {

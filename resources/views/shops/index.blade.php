@@ -4,19 +4,23 @@
     <div class="container mydiv">
         <div class="row">
             <div class="col-md-4">
-                <!-- bbb_deals -->
                 <div class="bbb_deals">
                     <div class="bbb_deals_title"><a href="{{route('shops.id',1)}}">Sklep z Lodami - tytuł</a></div>
                     <div class="bbb_deals_slider_container">
-                        <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg" alt="shop"></div>
+                        <div class="bbb_deals_item">
+                            <div class="bbb_deals_image"><img
+                                    src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg"
+                                    alt="shop"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                     <div class="bbb_deals_item_name">Lodziara</div>
                                 </div>
                                 <div class="available">
-                                    <div class="available_line d-flex flex-row justify-content-start">
-                                        <div class="available_title">Dostępne: <span>6</span> smaków</div>
+                                    <div class="available_line d-flex justify-content-between">
+                                        <div class="available_title">Available: <span>6</span></div>
+                                        @auth()
+                                            <div class="sold_title ml-auto"><i class="far fa-heart"></i></div>
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -34,44 +38,8 @@
         margin-bottom: 50px
     }
 
-    .padding-0 {
-        padding-right: 5px;
-        padding-left: 5px
-    }
-
     .bbb_deals_image {
         height: 300px
-    }
-
-    .img-style {
-        margin-left: -11px;
-        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        max-width: 104% !important
-    }
-
-    .m-t-20 {
-        margin-top: 20px
-    }
-
-    .bbb_background {
-        background-color: #E0E0E0 !important
-    }
-
-    .ribbon {
-        width: 150px;
-        height: 150px;
-        overflow: hidden;
-        position: absolute
-    }
-
-    .ribbon::before,
-    .ribbon::after {
-        position: absolute;
-        z-index: -1;
-        content: '';
-        display: block;
-        border: 5px solid #2980b9
     }
 
     .ribbon span {
@@ -88,33 +56,6 @@
         text-align: center
     }
 
-    .ribbon-top-right {
-        top: -10px;
-        right: -10px
-    }
-
-    .ribbon-top-right::before,
-    .ribbon-top-right::after {
-        border-top-color: transparent;
-        border-right-color: transparent
-    }
-
-    .ribbon-top-right::before {
-        top: 0;
-        left: 17px
-    }
-
-    .ribbon-top-right::after {
-        bottom: 17px;
-        right: 0
-    }
-
-    .ribbon-top-right span {
-        left: -25px;
-        top: 30px;
-        transform: rotate(45deg)
-    }
-
     div {
         display: block;
         position: relative;
@@ -126,7 +67,7 @@
 
     .bbb_deals {
         width: 100%;
-        background-color: rgba(81, 76, 76,0.5);
+        background-color: rgba(238, 217, 217, 0.8);
         margin-right: 7%;
         padding-top: 80px;
         padding-left: 25px;

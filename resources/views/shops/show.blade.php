@@ -5,19 +5,64 @@
         <div class="row main">
             <div class="col-lg-6 col-12 my-5 rcol">
                 <h3 class="product text-center">SHOP DETAILS</h3>
-                <div class="image text-center"><img src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg" width="300px" height="350px"></div>
-                <p class="text-center my-3">Toilet paper is a tissue paper product primarily used to clean<br>the anus and surrounding area of feces after defecation,<br> and to clean the vulva and perineum of puppies</p>
+                <div class="image text-center"><img
+                        src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg"
+                        width="300px" height="350px"></div>
+                <p class="text-center my-3">Toilet paper is a tissue paper product primarily used to clean<br>the anus
+                    and surrounding area of feces after defecation,<br> and to clean the vulva and perineum of puppies
+                </p>
             </div>
             <div class="col-lg-6 col-12 my-5 scol">
                 <div class="row r3">
                     <h3 class="payment">SHOP DETAILS</h3>
                 </div>
                 <div class="row r6">
+                    <div class="row r3">
+                        <h3 class="payment">Nowy Sklep z Lodami</h3>
+                    </div>
+                    <div class="row r3">
+                        <h3 class="payment">Dostępne lody:</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                        </ul>
+                    </div>
                     <div class="map">
-                        @include('maps.map')
+                        <x-map lat="50.69966521443689" lng="17.30130903565654"/>
                     </div>
                 </div>
             </div>
+
+            <div class="col-12 mt-5">
+                <div class="shadow p-3 bg-white rounded">
+                    @auth
+                        <div class="mt-5 d-flex flex-row">
+                            <div class="w-100 ml-2 comment-area">
+                                <textarea class="form-control"></textarea>
+                                <div class="d-flex align-items-end flex-column bd-highlight mb-3">
+                                    <button class="btn btn-secondary btn-block mt-2 post-btn">Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    @endauth
+                    <div class="d-flex flex-row mt-4">
+                        <div class="ml-2 w-100">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex flex-row align-items-center"><span class="font-weight-bold name">Mark Hamilton</div>
+                            </div>
+                            <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat.</p>
+                            <div class="mt-3 d-flex align-items-center"><span
+                                    class="dots"></span> <span class="fs-13">100 likes</span> <span class="dots"></span>
+                                <span> <i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-down"></i> </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
@@ -25,118 +70,90 @@
 <style>
     body {
         background: #000;
-        font-family: Arial, Helvetica, sans-serif
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 50vh;
     }
 
     .map {
-        width: 2vw;
+        max-width: 30vw;
         height: 2vh;
+    }
+
+    .main {
+        min-height: 50vh;
     }
 
     .container {
         background: #fff !important;
         border: none;
-        border-radius: 20px
-    }
-
-    h6.text-muted {
-        color: #6c757d85 !important
-    }
-
-    h4.text-danger {
-        margin-left: 250px;
-        color: #f11126 !important
-    }
-
-    .htwo {
-        margin-left: 200px
-    }
-
-    .scol {
-        padding-left: 60px
-    }
-
-    .row.r2 {
-        margin-bottom: 20px
-    }
-
-    .row.r2:after {
-        content: '.';
-        font-size: 0;
-        display: block;
-        height: 1px;
-        width: 77%;
-        background: #a9abae3d
-    }
-
-    h3.payment {
-        margin-top: 30px
-    }
-
-    h6.payment-method {
-        margin-top: 30px
-    }
-
-    .r5.col-2 {
-        padding-left: 0
-    }
-
-    div.col-2 {
-        cursor: pointer
-    }
-
-    .personalDetails {
-        margin-right: 100px;
-        padding-top: 30px
+        border-radius: 20px;
+        min-height: 50vh;
     }
 
     .form-control {
-        border: none;
-        border-radius: none;
-        border-bottom: 1px solid #a9abae3d
+        width: 100%;
+        height: 140px;
+        resize: none;
+        border: 2px solid #eee
     }
 
     .form-control:focus {
-        border: none;
-        color: #000 !important;
-        font-weight: bold;
-        border-color: #fff;
-        border-bottom: 1px solid #a9abae3d;
-        outline: 0;
-        box-shadow: 0 0 0 0 rgba(0, 123, 255, .25)
+        box-shadow: none
     }
 
-    .far {
-        color: #adb5bd
+    .form-control:focus .emojis {
+        border: 2px solid red
     }
 
-    .th {
-        margin-top: 10px
+    .comment-area {
+        position: relative
     }
 
-    .btn.btn-primary {
-        border: none;
-        border-radius: 40px;
-        width: 40%
+    .emojis li {
+        cursor: pointer
     }
 
-    @media screen and (max-width: 1200px) {
-        .rcol {
-            width: 100%
-        }
-
-        .scol {
-            width: 100%
-        }
+    .post-btn {
+        height: 50px;
+        font-size: 16px;
+        background: #aba9a9;
+        border: none
     }
 
-    @media screen and (max-width: 768px) {
-        .container {
-            width: 95%
-        }
-
-        .row.r2:after {
-            width: 95%
-        }
+    .dots {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: #eee;
+        margin-top: 2px;
+        margin-left: 5px;
+        margin-right: 5px
     }
+
+    .name i {
+        color: red;
+        font-size: 13px
+    }
+
+    .time-text {
+        font-size: 12px
+    }
+
+    .top-comment {
+        background-color: #eee;
+        padding: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 12px;
+        border-radius: 40px
+    }
+
+    .user-comment-text {
+        font-size: 14px
+    }
+
+    .fs-13 {
+        font-size: 13px
+    }
+
 </style>
