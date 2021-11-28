@@ -54,9 +54,3 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
-
-<style>
-    body{
-        background-color: red;
-    }
-</style>
