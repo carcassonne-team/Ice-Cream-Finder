@@ -1,22 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Ice Cream Finder</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar navbar-expand-lg custom_nav-container">
+    <a class="navbar-brand " href="{{route('home')}}"> Ice Cream Finder </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('home')}}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('shops.index')}}">Shops</a>
+            </li>
+
+            @auth()
+                @if(auth()->user()->role == "seller")
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('seller.add')}}">Add Shop</a>
+                    </li>
+                @endif
+
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            Log out
+                        </a>
+                    </form>
                 </li>
+            @endauth
+
+            @guest()
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{route('login')}}">Sign in</a>
                 </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+            @endguest
+
+        </ul>
     </div>
 </nav>
