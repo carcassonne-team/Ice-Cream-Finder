@@ -23,17 +23,22 @@
                     <div class="row r3">
                         <h3 class="payment">Dostępne lody:</h3>
                         <ul class="list-group">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item d-flex justify-content-between heart">An item <i
+                                    class="far fa-heart"></i></li>
+                            <li class="list-group-item d-flex justify-content-between heart">A second item <i
+                                    class="far fa-heart"></i></li>
+                            <li class="list-group-item d-flex justify-content-between heart">A third item <i
+                                    class="far fa-heart"></i></li>
                         </ul>
                     </div>
-                    <div class="map">
+                    <div class="map pt-3 pb-sm-5 row">
                         <x-map lat="50.69966521443689" lng="17.30130903565654"/>
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+        <div class="row pt-sm-5">
             <div class="col-12 mt-5">
                 <div class="shadow p-3 bg-white rounded">
                     @auth
@@ -49,7 +54,8 @@
                     <div class="d-flex flex-row mt-4">
                         <div class="ml-2 w-100">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row align-items-center"><span class="font-weight-bold name">Mark Hamilton</div>
+                                <div class="d-flex flex-row align-items-center"><span class="font-weight-bold name">Mark Hamilton
+                                </div>
                             </div>
                             <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -62,9 +68,15 @@
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
+@endsection
+
+@section('script')
+    <script>
+        const heart = $('.heart').on('click',(e) => {
+            $(this).addClass('act')
+        })
+    </script>
 @endsection
 
 <style>
@@ -81,6 +93,10 @@
 
     .main {
         min-height: 50vh;
+    }
+
+    .heart {
+        cursor: pointer;
     }
 
     .container {

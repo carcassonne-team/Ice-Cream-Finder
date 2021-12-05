@@ -61,7 +61,7 @@
                     lng
                 }
             }
-            if(data.name != null && data.map.lat !== 0){
+            if(data.name !== "" && data.map.lat !== 0){
                 alert('juhu')
             }else {
                 alert('wprowadz wszystie dane')
