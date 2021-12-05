@@ -23,12 +23,9 @@
                     <div class="row r3">
                         <h3 class="payment">Dostępne lody:</h3>
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between heart">An item <i
-                                    class="far fa-heart"></i></li>
-                            <li class="list-group-item d-flex justify-content-between heart">A second item <i
-                                    class="far fa-heart"></i></li>
-                            <li class="list-group-item d-flex justify-content-between heart">A third item <i
-                                    class="far fa-heart"></i></li>
+                            <li class="list-group-item d-flex justify-content-between heart">An item <button class="like btn btn-primary far fa-heart"></button></li>
+                            <li class="list-group-item d-flex justify-content-between heart">A second item <button class="like btn btn-primary far fa-heart"></button></li>
+                            <li class="list-group-item d-flex justify-content-between heart">A third item <button class="like btn btn-primary far fa-heart"></button></li>
                         </ul>
                     </div>
                     <div class="map pt-3 pb-sm-5 row">
@@ -72,11 +69,7 @@
 @endsection
 
 @section('script')
-    <script>
-        const heart = $('.heart').on('click',(e) => {
-            $(this).addClass('act')
-        })
-    </script>
+    <script src="{{asset('js/heart.js')}}"></script>
 @endsection
 
 <style>
