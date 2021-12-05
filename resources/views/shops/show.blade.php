@@ -1,34 +1,36 @@
 @extends('layout.layout')
 
 @section('content')
-    <div class="container m-5 mx-auto">
-        <div class="row main">
+    <div class="container mx-auto">
+        <div class="row main ">
             <div class="col-lg-6 col-12 my-5 rcol">
                 <h3 class="product text-center">SHOP DETAILS</h3>
                 <div class="image text-center"><img
                         src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg"
-                        width="300px" height="350px"></div>
+                        width="300px" height="350px" class="img-fluid"></div>
                 <p class="text-center my-3">Toilet paper is a tissue paper product primarily used to clean<br>the anus
                     and surrounding area of feces after defecation,<br> and to clean the vulva and perineum of puppies
                 </p>
             </div>
             <div class="col-lg-6 col-12 my-5 scol">
                 <div class="row r3">
-                    <h3 class="payment">SHOP DETAILS</h3>
+                    <h3 class="payment d-flex justify-content-center">SHOP DETAILS</h3>
                 </div>
                 <div class="row r6">
                     <div class="row r3">
-                        <h3 class="payment">Nowy Sklep z Lodami</h3>
+                        <h3 class="payment d-flex justify-content-center">Nowy Sklep z Lodami</h3>
                     </div>
                     <div class="row r3">
-                        <h3 class="payment">Dostępne lody:</h3>
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between heart">An item <button class="like btn btn-primary far fa-heart"></button></li>
-                            <li class="list-group-item d-flex justify-content-between heart">A second item <button class="like btn btn-primary far fa-heart"></button></li>
-                            <li class="list-group-item d-flex justify-content-between heart">A third item <button class="like btn btn-primary far fa-heart"></button></li>
-                        </ul>
+                        <h3 class="payment d-flex justify-content-center">Dostępne lody:</h3>
+                        <div class="">
+                            <ul class="list-group d-flex justify-content-center">
+                                <li class="list-group-item d-flex justify-content-between heart">An item <button class="like btn btn-primary far fa-heart"> 0 </button></li>
+                                <li class="list-group-item d-flex justify-content-between heart">A second item <button class="like btn btn-primary far fa-heart"> 0</button></li>
+                                <li class="list-group-item d-flex justify-content-between heart">A third item <button class="like btn btn-primary far fa-heart"> 0</button></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="map pt-3 pb-sm-5 row">
+                    <div class="map pt-3 pb-sm-5 row d-flex justify-content-center img-fluid">
                         <x-map lat="50.69966521443689" lng="17.30130903565654"/>
                     </div>
                 </div>
@@ -36,11 +38,12 @@
         </div>
     </div>
         <div class="row pt-sm-5">
-            <div class="col-12 mt-5">
+            <div class="col-12">
                 <div class="shadow p-3 bg-white rounded">
                     @auth
-                        <div class="mt-5 d-flex flex-row">
+                        <div class="d-flex flex-row">
                             <div class="w-100 ml-2 comment-area">
+                            <h1 class="d-flex justify-content-center">Comment...</h1>
                                 <textarea class="form-control"></textarea>
                                 <div class="d-flex align-items-end flex-column bd-highlight mb-3">
                                     <button class="btn btn-secondary btn-block mt-2 post-btn">Post</button>
@@ -51,7 +54,8 @@
                     <div class="d-flex flex-row mt-4">
                         <div class="ml-2 w-100">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row align-items-center"><span class="font-weight-bold name">Mark Hamilton
+                                <div class="d-flex flex-row align-items-center">
+                                    <span class="font-weight-bold name">Mark Hamilton</span>
                                 </div>
                             </div>
                             <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing

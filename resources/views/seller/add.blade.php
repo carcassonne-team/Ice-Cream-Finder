@@ -7,8 +7,8 @@
                 <div class="contact-info">
                     <img
                         src="https://is1-ssl.mzstatic.com/image/thumb/Purple71/v4/98/e7/77/98e777f4-94ff-1c8e-54f2-d1cc8642633e/source/256x256bb.jpg"
-                        width="100vw" height="100vh" alt="image"/>
-                    <h2>Add your shop</h2>
+                        width="100vw" height="100vh" alt="image" class="img-fluid rounded mx-auto d-block"/>
+                    <h2 class="d-flex justify-content-center">Add your shop</h2>
                 </div>
             </div>
             <div class="col-md-9">
@@ -29,9 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="photo">Map:</label>
-                            <div class="col-sm-10">
                                 @include('maps.map')
-                            </div>
                         </div>
                         <div class="form-group pt-5">
                             <div class="col-sm-offset-2 col-sm-10">
