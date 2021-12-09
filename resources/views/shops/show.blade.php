@@ -24,16 +24,22 @@
                         <h3 class="payment d-flex justify-content-center">Dostępne lody:</h3>
                         <div class="">
                             <ul class="list-group d-flex justify-content-center">
-                                <li class="list-group-item d-flex justify-content-between heart">An item <button class="like btn btn-primary far fa-heart"> 0 </button></li>
-                                <li class="list-group-item d-flex justify-content-between heart">A second item <button class="like btn btn-primary far fa-heart"> 0</button></li>
-                                <li class="list-group-item d-flex justify-content-between heart">A third item <button class="like btn btn-primary far fa-heart"> 0</button></li>
+                                <li class="list-group-item d-flex justify-content-between heart">An item
+                                    <button class="like btn btn-primary far fa-heart"> 0</button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between heart">A second item
+                                    <button class="like btn btn-primary far fa-heart"> 0</button>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between heart">A third item
+                                    <button class="like btn btn-primary far fa-heart"> 0</button>
+                                </li>
                             </ul>
-                        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Add flavor
-                        </button>
+                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                Add flavor
+                            </button>
                         </div>
                     </div>
-
                     <div class="">
                         <x-modal></x-modal>
                     </div>
@@ -45,43 +51,39 @@
             </div>
         </div>
     </div>
-        <div class="row pt-sm-5">
-            <div class="col-12">
-                <div class="shadow p-3 bg-white rounded">
-                    @auth
-                        <div class="d-flex flex-row">
-                            <div class="w-100 ml-2 comment-area">
+    <div class="row pt-sm-5">
+        <div class="col-12">
+            <div class="shadow p-3 bg-white rounded">
+                @auth
+                    <div class="d-flex flex-row">
+                        <div class="w-100 ml-2 comment-area">
                             <h1 class="d-flex justify-content-center">Comment...</h1>
-                                <textarea class="form-control"></textarea>
-                                <div class="d-flex align-items-end flex-column bd-highlight mb-3">
-                                    <button class="btn btn-secondary btn-block mt-2 post-btn">Post</button>
-                                </div>
+                            <textarea class="form-control"></textarea>
+                            <div class="d-flex align-items-end flex-column bd-highlight mb-3">
+                                <button class="btn btn-secondary btn-block mt-2 post-btn">Post</button>
                             </div>
                         </div>
-                    @endauth
-                    <div class="d-flex flex-row mt-4">
-                        <div class="ml-2 w-100">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row align-items-center">
-                                    <span class="font-weight-bold name">Mark Hamilton</span>
-                                </div>
+                    </div>
+                @endauth
+                <div class="d-flex flex-row mt-4">
+                    <div class="ml-2 w-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="font-weight-bold name">Mark Hamilton</span>
                             </div>
-                            <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.</p>
-                            <div class="mt-3 d-flex align-items-center"><span
-                                    class="dots"></span> <span class="fs-13">100 likes</span> <span class="dots"></span>
-                                <span> <i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-down"></i> </span></div>
                         </div>
+                        <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.</p>
+                        <div class="mt-3 d-flex align-items-center"><span
+                                class="dots"></span> <span class="fs-13">100 likes</span> <span class="dots"></span>
+                            <span> <i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-down"></i> </span></div>
                     </div>
                 </div>
             </div>
         </div>
-@endsection
-
-@section('script')
-    <script src="{{asset('js/heart.js')}}"></script>
+    </div>
 @endsection
 
 <style>
