@@ -23,7 +23,7 @@ Route::get("/maps", fn() => view("maps.map"));
 
 Route::get("/shops", fn() => view("shops.index"))->name('shops.index');
 Route::get("/myshops", fn() => view("shops.myshops"))->name('shops.my');
-Route::get("/shops/{id}", fn() => view("shops.show"))->name('shops.id');
+Route::get("/shops/{id}", fn() => [FlavorController::class,'index'])->name('shops.id');
 Route::post('/addflavor', [FlavorController::class,'store'])->name('add.flavor');
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");

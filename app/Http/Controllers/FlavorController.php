@@ -10,9 +10,9 @@ use Illuminate\View\View;
 
 class FlavorController extends Controller
 {
-    public function index(): Collection
+    public function index()
     {
-        return Flavor::query()->get();
+        return view("shops.show");
     }
 
     public function create(): View

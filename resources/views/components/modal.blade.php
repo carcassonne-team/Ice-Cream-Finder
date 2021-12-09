@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="flavorName" class="form-label">Flavor Name</label>
-                        <input type="email" class="form-control" id="flavorName" required>
+                        <input type="text" class="form-control" id="flavorName" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -24,6 +24,8 @@
 </div>
 
 @section('script')
+    <script src="{{asset('js/heart.js')}}"></script>
+
     <script>
         $(document).ready(function () {
             $('#addFlavorSubmit').click((e) => {
