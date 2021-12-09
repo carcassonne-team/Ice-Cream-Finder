@@ -20,6 +20,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('seller.add')}}">Add Shop</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('shops.my')}}">My shops</a>
+                    </li>
                 @endif
 
                 <li class="nav-item">

@@ -28,8 +28,16 @@
                                 <li class="list-group-item d-flex justify-content-between heart">A second item <button class="like btn btn-primary far fa-heart"> 0</button></li>
                                 <li class="list-group-item d-flex justify-content-between heart">A third item <button class="like btn btn-primary far fa-heart"> 0</button></li>
                             </ul>
+                        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Add flavor
+                        </button>
                         </div>
                     </div>
+
+                    <div class="">
+                        <x-modal></x-modal>
+                    </div>
+
                     <div class="map pt-3 pb-sm-5 row d-flex justify-content-center img-fluid">
                         <x-map lat="50.69966521443689" lng="17.30130903565654"/>
                     </div>
