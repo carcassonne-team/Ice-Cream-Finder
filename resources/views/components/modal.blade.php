@@ -1,6 +1,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+                <div class="alert alert-success flavorAlert" role="alert"></div>
+                <div class="alert alert-danger flavorAlertDanger" role="alert"></div>
             <form method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add new flavor</h5>
@@ -9,12 +11,12 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="flavorName" class="form-label">Flavor Name</label>
-                        <input type="email" class="form-control" id="flavorName">
+                        <input type="email" class="form-control" id="flavorName" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="addFlavorSubmit">Add flavor</button>
+                    <button type="submit" class="btn btn-primary" id="addFlavorSubmit">Add flavor</button>
                 </div>
             </form>
         </div>
@@ -25,21 +27,32 @@
     <script>
         $(document).ready(function () {
             $('#addFlavorSubmit').click((e) => {
-                // e.preventDefault();
+                e.preventDefault();
                 $.ajax({
                     type: 'POST',
                     url: '{{route('add.flavor')}}',
                     data: {
-                        flavorName: $('#flavorName').val(),
+                        name: $('#flavorName').val(),
                     },
                     success: function (data) {
-                        console.log(data);
+                        $('.flavorAlert').fadeIn().css("display", "block");
+                        $('.flavorAlert').html(data.success)
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
+                        $('.flavorAlertDanger').fadeIn().css("display", "block")
+                        $('.flavorAlertDanger').html(jqXHR.responseJSON.message);
                         console.log(jqXHR.responseJSON.message)
                     }
                 });
+                    $('.flavorAlert').fadeIn().css("display", "none");
+                    $('.flavorAlertDanger').fadeIn().css("display", "none")
             })
         });
     </script>
 @endsection
+
+<style>
+    .flavorAlert, .flavorAlertDanger {
+        display: none;
+    }
+</style>
