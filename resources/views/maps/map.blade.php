@@ -30,7 +30,7 @@
     <title>Document</title>
     <style>
         #map {
-            min-width: 55vw;
+            min-width: 30vw;
             height: 580px;
         }
     </style>

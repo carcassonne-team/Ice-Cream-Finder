@@ -19,7 +19,7 @@
                                     <div class="available_line d-flex justify-content-between">
                                         <div class="available_title">Available: <span>6</span></div>
                                         @auth()
-                                            <div class="sold_title ml-auto"><i class="far fa-heart"></i></div>
+                                            <button class="like btn btn-primary far fa-heart"></button>
                                         @endauth
                                     </div>
                                 </div>
@@ -30,6 +30,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{asset('js/heart.js')}}"></script>
 @endsection
 
 <style>
