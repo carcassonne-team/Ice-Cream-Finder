@@ -10,9 +10,9 @@ use Illuminate\View\View;
 
 class FlavorController extends Controller
 {
-    public function index()
+    public function index(): Collection
     {
-        return view("shops.show");
+        return Flavor::query()->get();
     }
 
     public function create(): View
@@ -26,9 +26,7 @@ class FlavorController extends Controller
         $flavor->name = $request->name;
         $flavor->save();
 
-        return response()->json([
-            'success' => 'Pomyślnie dodano smak'
-        ]);
+        return redirect("/flavors")->with("message", "Pomyślnie dodano smak.");
     }
 
     public function edit($id): void
