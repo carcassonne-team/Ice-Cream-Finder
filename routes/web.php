@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,9 @@ Route::get("/", fn() => view("layout.homepage"))->name("home");
 
 Route::get("/maps", fn() => view("maps.map"));
 
-Route::get("/shops", fn() => view("shops.index"))->name('shops.index');
-Route::get("/myshops", fn() => view("shops.myshops"))->name('shops.my');
-Route::get("/shops/{id}", fn() => view("shops.show"))->name('shops.id');
+Route::get("/shops", [ShopController::class, "index"])->name('shops.index');
+Route::get("/myshops", [ShopController::class, "indexMyShops"])->name('shops.my');;
+Route::get("/shops/{id}", [ShopController::class, "show"])->name('shops.id');
 Route::post('/addflavor', [TestController::class,'index'])->name('add.flavor');
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");

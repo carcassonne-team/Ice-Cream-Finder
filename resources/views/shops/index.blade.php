@@ -3,9 +3,11 @@
 @section('content')
     <div class="container mydiv">
         <div class="row">
+            @foreach($shops as $shop)
             <div class="col-md-4">
+
                 <div class="bbb_deals">
-                    <div class="bbb_deals_title"><a href="{{route('shops.id',1)}}">Sklep z Lodami - tytuł</a></div>
+                    <div class="bbb_deals_title"><a href="{{route('shops.id',$shop->id)}}">{{$shop->name}}</a></div>
                     <div class="bbb_deals_slider_container">
                         <div class="bbb_deals_item">
                             <div class="bbb_deals_image"><img
@@ -13,11 +15,14 @@
                                     alt="shop"></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                    <div class="bbb_deals_item_name">Lodziara</div>
+                                    <div class="bbb_deals_item_name">
+                                        <br>
+                                        <h5>{{$shop->city}}, ul. {{$shop->street_name}} {{$shop->street_number}}</h5>
+                                    </div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex justify-content-between">
-                                        <div class="available_title">Available: <span>6</span></div>
+                                        <div class="available_title">Dostępnych smaków: <span>{{\App\Models\IceCream::query()->where('available', true)->where('ice_cream_shop_id', $shop->id)->count()}}</span></div>
                                         @auth()
                                             <button class="like btn btn-primary far fa-heart"></button>
                                         @endauth
@@ -28,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 @endsection
