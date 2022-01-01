@@ -23,10 +23,14 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                Add flavor
-                            </button>
+                            @auth
+                                @if (\Illuminate\Support\Facades\Auth::user()->id == $shop->user_id)
+                                    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                        Dodaj smak
+                                    </button>
+                                @endif
+                            @endauth
                         </div>
                     </div>
                     <div class="">
