@@ -64,7 +64,7 @@
             if(data.name !== "" && data.map.lat !== 0){
                 $.ajax({
                     type: 'POST',
-                    url: '{{route('add.flavor')}}',
+                    url: '{{route('add.shop')}}',
                     data: {
                         name: $sName,
                         image: $sPhoto,

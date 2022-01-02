@@ -26,7 +26,9 @@ class FlavorController extends Controller
         $flavor->name = $request->name;
         $flavor->save();
 
-        return redirect("/flavors")->with("message", "Pomyślnie dodano smak.");
+        return response()->json([
+            'success' => 'Pomyślnie dodano smak'
+        ]);
     }
 
     public function edit($id): void
