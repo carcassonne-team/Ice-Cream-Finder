@@ -24,7 +24,7 @@ Route::get("/maps", fn() => view("maps.map"));
 Route::get("/shops", [ShopController::class, "index"])->name('shops.index');
 Route::get("/myshops", [ShopController::class, "indexMyShops"])->name('shops.my');;
 Route::get("/shops/{id}", [ShopController::class, "show"])->name('shops.id');
-Route::post('/addflavor', [TestController::class,'index'])->name('add.flavor');
+Route::post('/addflavor', [ShopController::class,'store'])->name('add.flavor');
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");
 Route::get("/seller/add", fn() => view("seller.add"))->name("seller.add")->middleware("checkRole:seller");

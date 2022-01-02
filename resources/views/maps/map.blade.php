@@ -90,12 +90,6 @@
         lat = data.latlng.lat;
         lng = data.latlng.lng;
 
-        console.log({
-            lat: data.latlng.lat,
-            lng: data.latlng.lng,
-        } );
-
-
         if (theMarker != undefined) {
             map.removeLayer(theMarker);
         };

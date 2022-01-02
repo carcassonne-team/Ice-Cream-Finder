@@ -3,6 +3,8 @@
 @section('content')
     <div class="container contact">
         <div class="row">
+            <div class="alert alert-success addShopAlert" role="alert"></div>
+            <div class="alert alert-danger addShopAlertDanger" role="alert"></div>
             <div class="col-md-3">
                 <div class="contact-info">
                     <img
@@ -60,11 +62,40 @@
                 }
             }
             if(data.name !== "" && data.map.lat !== 0){
-                alert('juhu')
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('add.flavor')}}',
+                    data: {
+                        name: $sName,
+                        image: $sPhoto,
+                        city: data
+                    },
+                    success: function (data) {
+                        $('.addShopAlert').fadeIn().css("display", "block")
+                        $('.addShopAlert').html(data);
+                        window.location.replace("{{route('shops.my')}}");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        showError(jqXHR.responseJSON.message)
+                        scrollUp();
+                    }
+                });
             }else {
-                alert('wprowadz wszystie dane')
+                showError("Wyprowadź wszystkie dane")
+                scrollUp();
             }
         })
+
+        function showError(text){
+            $('.addShopAlertDanger').fadeIn().css("display", "block")
+            $('.addShopAlertDanger').html(text);
+        }
+
+        function scrollUp(){
+            $("html, body").animate({
+                scrollTop: 0
+            }, 1);
+        }
     </script>
 @endsection
 
@@ -75,6 +106,9 @@
     .contact {
         padding: 4%;
         height: 400px;
+    }
+    .addShopAlert, .addShopAlertDanger {
+        display: none;
     }
     .col-md-3 {
         background: rgb(255, 255, 255);

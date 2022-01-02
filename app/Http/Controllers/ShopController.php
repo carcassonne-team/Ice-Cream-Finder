@@ -36,7 +36,7 @@ class ShopController extends Controller
         return view("shops.create");
     }
 
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
         $shop = new IceCreamShop();
         $shop->name = $request->name;
