@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="">
-                        <x-modal></x-modal>
+                        <x-modal shopId="{{$shop->id}}"></x-modal>
                     </div>
 
                     <div class="map pt-3 pb-sm-5 row d-flex justify-content-center img-fluid">

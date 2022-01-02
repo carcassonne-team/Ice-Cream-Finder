@@ -1,16 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Illuminate\View\Component;
 
 class Map extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
+    /** Create a new component instance. */
     public $lat;
     public $lng;
 
@@ -25,7 +23,6 @@ class Map extends Component
         $this->lng = $lng;
     }
 
-
     /**
      * Get the view / contents that represent the component.
      *
@@ -33,6 +30,6 @@ class Map extends Component
      */
     public function render()
     {
-        return view('components.map');
+        return view("components.map");
     }
 }

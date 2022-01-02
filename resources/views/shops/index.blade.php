@@ -5,8 +5,7 @@
         <div class="row">
             @foreach($shops as $shop)
             <div class="col-md-4">
-
-                <div class="bbb_deals">
+                <div class="bbb_deals mt-3" >
                     <div class="bbb_deals_title"><a href="{{route('shops.id',$shop->id)}}">{{$shop->name}}</a></div>
                     <div class="bbb_deals_slider_container">
                         <div class="bbb_deals_item">

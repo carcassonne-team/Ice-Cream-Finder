@@ -35,11 +35,13 @@
                     url: '{{route('add.flavor')}}',
                     data: {
                         name: $('#flavorName').val(),
+                        shopId: {{$shopId}},
                     },
                     success: function (data) {
                         $('.flavorAlert').fadeIn().css("display", "block");
                         $('.flavorAlert').html(data.success)
                         $('#flavorName').val('');
+                        location.replace('{{route('shops.id', $shopId)}}');
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         $('.flavorAlertDanger').fadeIn().css("display", "block")

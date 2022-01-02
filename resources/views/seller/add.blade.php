@@ -68,7 +68,8 @@
                     data: {
                         name: $sName,
                         image: $sPhoto,
-                        city: data
+                        lat: lat,
+                        lng: lng,
                     },
                     success: function (data) {
                         $('.addShopAlert').fadeIn().css("display", "block")

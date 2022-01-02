@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FlavorRequest;
 use App\Models\Flavor;
+use App\Models\IceCream;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -26,8 +29,14 @@ class FlavorController extends Controller
         $flavor->name = $request->name;
         $flavor->save();
 
+        $iceCream = new IceCream();
+        $iceCream->available = true;
+        $iceCream->ice_cream_shop_id = $request->shopId;
+        $iceCream->flavor_id = $flavor->id;
+        $iceCream->save();
+
         return response()->json([
-            'success' => 'Pomyślnie dodano smak'
+            "success" => "Pomyślnie dodano smak",
         ]);
     }
 

@@ -1,19 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Illuminate\View\Component;
 
 class Modal extends Component
 {
+    public $shopId;
+
     /**
      * Create a new component instance.
-     *
-     * @return void
      */
-    public function __construct()
+    public function __construct($shopId)
     {
-        //
+        $this->shopId = $shopId;
     }
 
     /**
@@ -23,6 +25,6 @@ class Modal extends Component
      */
     public function render()
     {
-        return view('components.modal');
+        return view("components.modal");
     }
 }

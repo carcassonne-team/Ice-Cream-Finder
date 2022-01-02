@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Illuminate\View\Component;
@@ -8,8 +10,6 @@ class LikeButton extends Component
 {
     /**
      * Create a new component instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -23,6 +23,6 @@ class LikeButton extends Component
      */
     public function render()
     {
-        return view('components.like-button');
+        return view("components.like-button");
     }
 }
