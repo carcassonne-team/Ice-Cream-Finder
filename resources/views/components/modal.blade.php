@@ -39,6 +39,7 @@
                     success: function (data) {
                         $('.flavorAlert').fadeIn().css("display", "block");
                         $('.flavorAlert').html(data.success)
+                        $('#flavorName').val('');
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         $('.flavorAlertDanger').fadeIn().css("display", "block")
