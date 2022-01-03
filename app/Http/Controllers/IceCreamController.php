@@ -33,6 +33,18 @@ class IceCreamController extends Controller
         return redirect("/shops")->with("message", "Pomyślnie dodano produkt.");
     }
 
+    public function like(Request $request)
+    {
+        $iceCream = IceCream::query()->findOrFail($request->id);
+        $iceCream->like();
+    }
+
+    public function unlike(Request $request): void
+    {
+        $iceCream = IceCream::query()->findOrFail($request->id);
+        $iceCream->unlike();
+    }
+
     public function show($id): View
     {
         //

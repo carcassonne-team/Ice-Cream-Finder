@@ -7,12 +7,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FlavorRequest;
 use App\Models\Flavor;
 use App\Models\IceCream;
+use Conner\Likeable\Likeable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FlavorController extends Controller
 {
+    use Likeable;
+
     public function index(): Collection
     {
         return Flavor::query()->get();

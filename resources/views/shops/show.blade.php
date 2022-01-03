@@ -19,7 +19,8 @@
                             <ul class="list-group d-flex justify-content-center">
                                 @foreach($iceCreams as $iceCream)
                                     <li class="list-group-item d-flex justify-content-between heart">{{\App\Models\Flavor::query()->where('id', $iceCream->flavor_id)->value('name')}}
-                                        <button class="like btn btn-primary far fa-heart"> 0</button>
+                                        <button class="like btn btn-primary far fa-heart" data-id="{{$iceCream->id}}">
+                                            {{$iceCream->likeCount}}</button>
                                     </li>
                                 @endforeach
                             </ul>
@@ -175,3 +176,40 @@
     }
 
 </style>
+
+@section('script')
+    <script>
+        $(function () {
+            $(document).on('click', 'button.like', function () {
+                let i = $(this).text();
+                if ($(this).hasClass("far")) {
+                    i++;
+                    $(this).toggleClass("far fas")
+                    $(this).html(" "+i)
+                    doAJAX("{{route('like.flavor')}}", 2)
+                } else {
+                    i--
+                    $(this).html(" "+i)
+                    $(this).toggleClass("fas far")
+                }
+            });
+        });
+
+        function doAJAX(url, id) {
+            $.ajax({
+                url,
+                type: 'POST',
+                data: {
+                    flavorId: id,
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR)
+                }
+            });
+        }
+
+    </script>
+@endsection

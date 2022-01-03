@@ -52,6 +52,35 @@
                     $('.flavorAlert').fadeIn().css("display", "none");
                     $('.flavorAlertDanger').fadeIn().css("display", "none")
             })
+
+            $(function () {
+                $(document).on('click', 'button.like', function () {
+                    let flavorId = $(this).attr('data-id');
+
+                    let i = $(this).text();
+                    if ($(this).hasClass("far")) {
+                        i++;
+                        $(this).toggleClass("far fas")
+                        $(this).html(" "+i)
+                        doAJAX("{{route('like.flavor')}}", flavorId)
+                    } else {
+                        i--
+                        $(this).html(" "+i)
+                        $(this).toggleClass("fas far")
+                        doAJAX("{{route('unlike.flavor')}}", flavorId)
+                    }
+                });
+            });
+
+            function doAJAX(url, id) {
+                $.ajax({
+                    url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                    }
+                });
+            }
         });
     </script>
 @endsection
