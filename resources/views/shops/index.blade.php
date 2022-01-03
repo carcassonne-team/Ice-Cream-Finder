@@ -22,9 +22,6 @@
                                 <div class="available">
                                     <div class="available_line d-flex justify-content-between">
                                         <div class="available_title">Dostępnych smaków: <span>{{\App\Models\IceCream::query()->where('available', true)->where('ice_cream_shop_id', $shop->id)->count()}}</span></div>
-                                        @auth()
-                                            <button class="like btn btn-primary far fa-heart"></button>
-                                        @endauth
                                     </div>
                                 </div>
                             </div>

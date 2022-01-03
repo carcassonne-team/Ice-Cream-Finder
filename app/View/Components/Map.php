@@ -11,16 +11,19 @@ class Map extends Component
     /** Create a new component instance. */
     public $lat;
     public $lng;
+    public  $shopName;
 
     /**
      * Map constructor.
-     * @param $lat
-     * @param $lng
+     * @param string $lat
+     * @param string $lng
+     * @param string $shopName
      */
-    public function __construct($lat = "", $lng = "")
+    public function __construct($lat = "", $lng = "", $shopName= "")
     {
         $this->lat = $lat;
         $this->lng = $lng;
+        $this->shopName = $shopName;
     }
 
     /**

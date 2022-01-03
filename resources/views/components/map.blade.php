@@ -73,7 +73,7 @@
     var results = L.layerGroup().addTo(map);
 
     const marker = L.marker(geo,{icon: Icon}).bindPopup(
-        '<img src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg" width="200px" height="200px"/> Shop name '
+        '<img src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg" width="200px" height="200px"/> {{$shopName}} '
     ).addTo(map)
 
     marker.on('click',() => {

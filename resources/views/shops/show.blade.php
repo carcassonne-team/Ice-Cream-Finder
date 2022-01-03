@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="map pt-3 pb-sm-5 row d-flex justify-content-center img-fluid">
-                        <x-map lat="{{$location->lat}}" lng="{{$location->lng}}"/>
+                        <x-map lat="{{$location->lat}}" lng="{{$location->lng}}" shopName="{{$shop->name}}"/>
                     </div>
                 </div>
             </div>
