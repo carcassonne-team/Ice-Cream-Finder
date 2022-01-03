@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\FlavorController;
+use App\Http\Controllers\IceCreamController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,8 @@ Route::get("/myshops", [ShopController::class, "indexMyShops"])->name("shops.my"
 Route::get("/shops/{id}", [ShopController::class, "show"])->name("shops.id");
 Route::post("/addshop", [ShopController::class, "store"])->name("add.shop");
 Route::post("/addflavor", [FlavorController::class, "store"])->name("add.flavor");
+Route::post("/like", [IceCreamController::class, "like"])->name("like.flavor");
+Route::post("/unlike", [IceCreamController::class, "unlike"])->name("unlike.flavor");
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");
 Route::get("/seller/add", fn() => view("seller.add"))->name("seller.add")->middleware("checkRole:seller");
