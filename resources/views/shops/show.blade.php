@@ -1,6 +1,14 @@
 @extends('layout.layout')
 
 @section('content')
+
+    @if(session()->has('message'))
+        <br>
+        <div class="alert alert-success ">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+
     <div class="container mx-auto">
         <div class="row main ">
             <div class="col-lg-6 col-12 my-5 rcol">
@@ -48,33 +56,38 @@
     <div class="row pt-sm-5">
         <div class="col-12">
             <div class="shadow p-3 bg-white rounded">
-                @auth
+
                     <div class="d-flex flex-row">
                         <div class="w-100 ml-2 comment-area">
                             <h1 class="d-flex justify-content-center">Komentarze:</h1>
+                            @auth
                             <br>
                             <p>Napisz swój komentarz:</p>
-                            <textarea class="form-control"></textarea>
-                            <div class="d-flex align-items-end flex-column bd-highlight mb-3">
-                                <button class="btn btn-secondary btn-block mt-2 post-btn">Post</button>
-                            </div>
+                            <form method="post" action="{{route("store.comment")}}">
+                                @csrf
+                                <div class="form-group" >
+                                    <input type="text" class="form-control" id="body" name="body">
+                                    <input type="hidden" class="form-control" id="ice_cream_shop_id" name="ice_cream_shop_id" value="{{$shop->id}}">
+                                    <br>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Dodaj</button>
+                            </form>
+                            @endauth
                         </div>
                     </div>
-                @endauth
+
                 <div class="d-flex flex-row mt-4">
                     <div class="ml-2 w-100">
+                        @foreach($comments as $comment)
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center">
-                                <span class="font-weight-bold name">Mark Hamilton</span>
+                                <span class="font-weight-bold name">{{\App\Models\User::query()->where('id', $comment->user_id)->value('name')}}</span>
                             </div>
                         </div>
-                        <p class="user-comment-text text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.</p>
-                        <div class="mt-3 d-flex align-items-center"><span
-                                class="dots"></span> <span class="fs-13">100 likes</span> <span class="dots"></span>
-                            <span> <i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-down"></i> </span></div>
+                        <p class="user-comment-text text-justify">{{$comment->body}}
+                        </p>
+                        @endforeach
                     </div>
                 </div>
             </div>

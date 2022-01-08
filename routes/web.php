@@ -29,10 +29,11 @@ Route::post("/addshop", [ShopController::class, "store"])->name("add.shop");
 Route::post("/addflavor", [FlavorController::class, "store"])->name("add.flavor");
 Route::post("/like", [IceCreamController::class, "like"])->name("like.flavor");
 Route::post("/unlike", [IceCreamController::class, "unlike"])->name("unlike.flavor");
+Route::post("/comment", [ShopController::class, "comment"])->name("store.comment");
 
 Route::get("/seller", fn() => view("forms.seller"))->name("seller")->middleware("checkRole:seller");
 Route::get("/seller/add", fn() => view("seller.add"))->name("seller.add")->middleware("checkRole:seller");
 
-Route::get("/dashboard", fn() => view("dashboard"))->middleware(["auth"])->name("dashboard");
+Route::get("/dashboard", [IceCreamController::class, "show"])->middleware(["auth"])->name("dashboard");
 
 require __DIR__ . "/auth.php";

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\IceCream;
 use App\Models\IceCreamShop;
 use App\Models\Location;
@@ -65,11 +66,13 @@ class ShopController extends Controller
         $shop = IceCreamShop::query()->findOrFail($id);
         $iceCreams = IceCream::query()->where("ice_cream_shop_id", "=", $shop->id)->where("available", true)->get();
         $location = Location::query()->findOrFail($shop->location_id);
+        $comments = Comment::query()->where("ice_cream_shop_id", "=", $shop->id)->get();
 
         return view("shops.show", [
             "shop" => $shop,
             "iceCreams" => $iceCreams,
             "location" => $location,
+            "comments" => $comments,
         ]);
     }
 
@@ -88,5 +91,17 @@ class ShopController extends Controller
         IceCreamShop::query()->findOrFail($id)->delete();
 
         return redirect("/shops")->with("message", "Pomyślnie usunięto sklep.");
+    }
+
+    public function comment(Request $request)
+    {
+        $comment = new Comment();
+        $comment->body = $request->body;
+        $comment->ice_cream_shop_id = $request->ice_cream_shop_id;
+        $comment->user_id = Auth::user()->id;
+
+        $comment->save();
+
+        return redirect("/shops/{$request->ice_cream_shop_id}")->with("message", "Pomyślnie dodano komentarz.");
     }
 }

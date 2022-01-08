@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IceCreamRequest;
-use App\Models\Flavor;
 use App\Models\IceCream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class IceCreamController extends Controller
@@ -33,7 +33,7 @@ class IceCreamController extends Controller
         return redirect("/shops")->with("message", "Pomyślnie dodano produkt.");
     }
 
-    public function like(Request $request)
+    public function like(Request $request): void
     {
         $iceCream = IceCream::query()->findOrFail($request->id);
         $iceCream->like();
@@ -45,9 +45,17 @@ class IceCreamController extends Controller
         $iceCream->unlike();
     }
 
-    public function show($id): View
+    public function show(): View
     {
-        //
+        $myUserId = Auth::user()->id;
+
+        $likedIceCream = IceCream::whereLikedBy($myUserId) // find only articles where user liked them
+            ->with("likeCounter") // highly suggested to allow eager load
+            ->get();
+
+        return view("dashboard", [
+            "likedIceCream" => $likedIceCream,
+        ]);
     }
 
     public function edit($id): void
@@ -65,12 +73,5 @@ class IceCreamController extends Controller
         IceCream::query()->findOrFail($id)->delete();
 
         return redirect("/shops")->with("message", "Pomyślnie usunięto produkt.");
-    }
-
-    public function getFlavor($id)
-    {
-        $flavorId = IceCream::query()->findOrFail($id)->value("flavor_id");
-
-        return Flavor::query()->findOrFail($flavorId)->value("name");
     }
 }
