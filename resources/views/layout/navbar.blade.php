@@ -8,21 +8,23 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
+            @auth
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('home')}}">Home</a>
+                <a class="nav-link" href="{{route('dashboard')}}">Twój Profil</a>
             </li>
+            @endauth
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('shops.index')}}">Shops</a>
+                <a class="nav-link" href="{{route('shops.index')}}">Lodziarnie</a>
             </li>
 
             @auth()
                 @if(auth()->user()->role == "seller")
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('seller.add')}}">Add Shop</a>
+                        <a class="nav-link" href="{{route('seller.add')}}">Dodaj Lodziarnie</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('shops.my')}}">My shops</a>
+                        <a class="nav-link" href="{{route('shops.my')}}">Moje lodziarnie</a>
                     </li>
                 @endif
 
