@@ -41,7 +41,6 @@ class ShopController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $apiResponse = Http::get("https://api.opencagedata.com/geocode/v1/json?key=" . env("MAP_API_KEY") . "&q={$request->lat}+{$request->lng}")->json();
         $location = new Location();
         $location->lat = $request->lat;
@@ -54,10 +53,8 @@ class ShopController extends Controller
         $shop->street_name = $apiResponse["results"][0]["components"]["road"];
         $shop->street_number = $apiResponse["results"][0]["components"]["house_number"];
         if ($request->hasfile('photo')) {
-            $file = $request->file('photo');
-            $name = $file->getClientOriginalName();
-            $file->move(public_path() . '/files/', $name);
-            $shop->image = $name;
+            $path = $request['photo']->store('shops','public');
+            $shop->image = $path;
         }
         $shop->user_id = Auth::user()->id;
         $shop->location_id = $location->id;
