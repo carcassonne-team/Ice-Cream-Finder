@@ -16,8 +16,10 @@
                 <div class="image text-center"><img
                         src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg"
                         width="300px" height="350px" class="img-fluid"></div>
-                <p class="text-center my-3">
-                </p>
+                <h2 class="text-center my-3">
+                    Godziny otwarcia
+                </h2>
+                <h4 class="text-center">{{$carbon->parse($shop->open_from)->format("H:i")}} - {{$carbon->parse($shop->open_to)->format("H:i")}}</h4>
             </div>
             <div class="col-lg-6 col-12 my-5 scol">
                 <div class="row r6">

@@ -59,7 +59,7 @@
         $('#form-add').submit((e) => {
             e.preventDefault()
             let $sName = $('#fname').val()
-            let $sPhoto = $('#photo').val();
+            let $sPhoto = new FormData($('#photo')[0]);
             let $sOpenFrom = $('#open_from').val()
             let $sOpenTo = $('#open_to').val()
             const data = {

@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\IceCream;
 use App\Models\IceCreamShop;
 use App\Models\Location;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -71,12 +72,14 @@ class ShopController extends Controller
         $iceCreams = IceCream::query()->where("ice_cream_shop_id", "=", $shop->id)->where("available", true)->get();
         $location = Location::query()->findOrFail($shop->location_id);
         $comments = Comment::query()->where("ice_cream_shop_id", "=", $shop->id)->get();
+        $carbon = new Carbon() ;
 
         return view("shops.show", [
             "shop" => $shop,
             "iceCreams" => $iceCreams,
             "location" => $location,
             "comments" => $comments,
+            "carbon" => $carbon,
         ]);
     }
 
