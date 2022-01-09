@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShopRequest;
 use App\Models\Comment;
 use App\Models\IceCream;
 use App\Models\IceCreamShop;
@@ -40,7 +41,7 @@ class ShopController extends Controller
         return view("shops.create");
     }
 
-    public function store(Request $request)
+    public function store(ShopRequest $request)
     {
         $apiResponse = Http::get("https://api.opencagedata.com/geocode/v1/json?key=" . env("MAP_API_KEY") . "&q={$request->lat}+{$request->lng}")->json();
         $location = new Location();
