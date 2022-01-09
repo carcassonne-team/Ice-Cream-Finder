@@ -17,6 +17,8 @@ class CreateIceCreamShopsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("city");
+            $table->time("open_from");
+            $table->time("open_to");
             $table->string("street_name");
             $table->string("street_number");
             $table->string("image")->nullable();

@@ -24,6 +24,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-2" for="photo">Godziny otwarcia:</label>
+                            <div class="col-sm-10">
+                                <input type="time" class="form-control" id="open_from" name="open_from">
+                                <input type="time" class="form-control" id="open_to" name="open_to">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-sm-2" for="photo">Photo:</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" id="photo" name="photo">
@@ -52,7 +59,9 @@
         $('#form-add').submit((e) => {
             e.preventDefault()
             let $sName = $('#fname').val()
-            let $sPhoto = $('#photo').val()
+            let $sPhoto = $('#photo').val();
+            let $sOpenFrom = $('#open_from').val()
+            let $sOpenTo = $('#open_to').val()
             const data = {
                 name: $sName,
                 photo: $sPhoto,
@@ -68,6 +77,8 @@
                     data: {
                         name: $sName,
                         image: $sPhoto,
+                        open_from: $sOpenFrom,
+                        open_to: $sOpenTo,
                         lat: lat,
                         lng: lng,
                     },

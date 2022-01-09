@@ -49,6 +49,8 @@ class ShopController extends Controller
 
         $shop = new IceCreamShop();
         $shop->name = $request->name;
+        $shop->open_from = $request->open_from;
+        $shop->open_to = $request->open_to;
         $shop->city = $apiResponse["results"][0]["components"]["city"];
         $shop->street_name = $apiResponse["results"][0]["components"]["road"];
         $shop->street_number = $apiResponse["results"][0]["components"]["house_number"];
