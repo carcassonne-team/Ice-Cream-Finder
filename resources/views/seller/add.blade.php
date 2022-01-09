@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-9">
                 <div class="contact-form">
-                    <form id="form-add">
+                    <form id="form-add" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="fname">Shop Name:</label>
                             <div class="col-sm-10">
