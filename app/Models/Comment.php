@@ -10,4 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    public function getUserName()
+    {
+        return User::query()->where('id', $this->user_id)->value('name');
+    }
 }

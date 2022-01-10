@@ -17,6 +17,9 @@
                         src="https://static.turbosquid.com/Preview/2017/02/15__11_06_03/2.pngEE1C23C6-2483-409B-AD17-4A772BE5BC9AOriginal.jpg"
                         width="300px" height="350px" class="img-fluid"></div>
                 <h2 class="text-center my-3">
+                    {{$shop->getAddress()}}
+                </h2>
+                <h2 class="text-center my-3">
                     Godziny otwarcia
                 </h2>
                 <h4 class="text-center">{{$carbon->parse($shop->open_from)->format("H:i")}} - {{$carbon->parse($shop->open_to)->format("H:i")}}</h4>
@@ -28,7 +31,7 @@
                         <div class="">
                             <ul class="list-group d-flex justify-content-center">
                                 @foreach($iceCreams as $iceCream)
-                                    <li class="list-group-item d-flex justify-content-between heart">{{\App\Models\Flavor::query()->where('id', $iceCream->flavor_id)->value('name')}}
+                                    <li class="list-group-item d-flex justify-content-between heart">{{$iceCream->getFlavorName()}}
                                         <button class="like btn btn-primary far fa-heart" data-id="{{$iceCream->id}}">
                                             {{$iceCream->likeCount}}</button>
                                     </li>
@@ -84,7 +87,7 @@
                         @foreach($comments as $comment)
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center">
-                                <span class="font-weight-bold name">{{\App\Models\User::query()->where('id', $comment->user_id)->value('name')}}</span>
+                                <span class="font-weight-bold name">{{$comment->getUserName()}}</span>
                             </div>
                         </div>
                         <p class="user-comment-text text-justify">{{$comment->body}}

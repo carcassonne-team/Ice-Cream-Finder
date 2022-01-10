@@ -16,12 +16,12 @@
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                     <div class="bbb_deals_item_name">
                                         <br>
-                                        <h5>{{$shop->city}}, ul. {{$shop->street_name}} {{$shop->street_number}}</h5>
+                                        <h5>{{$shop->getAddress()}}</h5>
                                     </div>
                                 </div>
                                 <div class="available">
                                     <div class="available_line d-flex justify-content-between">
-                                        <div class="available_title">Dostępnych smaków: <span>{{\App\Models\IceCream::query()->where('available', true)->where('ice_cream_shop_id', $shop->id)->count()}}</span></div>
+                                        <div class="available_title">Dostępnych smaków: <span>{{$shop->getFlavorCount()}}</span></div>
                                     </div>
                                 </div>
                             </div>

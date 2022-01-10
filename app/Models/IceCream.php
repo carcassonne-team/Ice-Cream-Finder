@@ -13,4 +13,10 @@ class IceCream extends Model
     use HasFactory;
     use Likeable;
 
+    public function getFlavorName()
+    {
+        return Flavor::query()->where('id', $this->flavor_id)->value('name');
+    }
+
+
 }

@@ -11,7 +11,7 @@ class Map extends Component
     /** Create a new component instance. */
     public $lat;
     public $lng;
-    public  $shopName;
+    public $shopName;
 
     /**
      * Map constructor.
