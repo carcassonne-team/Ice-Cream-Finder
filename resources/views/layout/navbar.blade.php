@@ -34,7 +34,7 @@
 
                         <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            Log out
+                            Wyloguj się
                         </a>
                     </form>
                 </li>
@@ -42,7 +42,10 @@
 
             @guest()
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Sign in</a>
+                    <a class="nav-link" href="{{route('login')}}">Zaloguj się</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('register')}}">Zarejestruj się</a>
                 </li>
             @endguest
 

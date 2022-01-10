@@ -10,32 +10,39 @@
                     <img
                         src="https://is1-ssl.mzstatic.com/image/thumb/Purple71/v4/98/e7/77/98e777f4-94ff-1c8e-54f2-d1cc8642633e/source/256x256bb.jpg"
                         width="100vw" height="100vh" alt="image" class="img-fluid rounded mx-auto d-block"/>
-                    <h2 class="d-flex justify-content-center">Add your shop</h2>
+                    <h2 class="d-flex justify-content-center">Dodaj nowy Sklep</h2>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="contact-form">
-                    <form id="form-add">
+                    <form id="form-add" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="fname">Shop Name:</label>
+                            <label class="control-label col-sm-2" for="fname">Nazwa sklepu:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="fname" placeholder="Enter Shop Name"
+                                <input type="text" class="form-control" id="fname" placeholder="Wprowadz nazwe sklepu"
                                        name="sname">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="photo">Photo:</label>
+                            <label class="control-label col-sm-2" for="photo">Godziny otwarcia:</label>
+                            <div class="col-sm-10">
+                                <input type="time" class="form-control" id="open_from" name="open_from">
+                                <input type="time" class="form-control" id="open_to" name="open_to">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="photo">Zdjęcie:</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" id="photo" name="photo">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="photo">Map:</label>
+                            <label class="control-label col-sm-2" for="photo">Mapa:</label>
                                 @include('maps.map')
                         </div>
                         <div class="form-group pt-5">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button class="btn btn-default submitBtn">Submit</button>
+                                <button class="btn btn-default submitBtn">Potwierdź</button>
                             </div>
                         </div>
                     </form>
@@ -52,7 +59,9 @@
         $('#form-add').submit((e) => {
             e.preventDefault()
             let $sName = $('#fname').val()
-            let $sPhoto = $('#photo').val()
+            let $sPhoto = $('#photo').val();
+            let $sOpenFrom = $('#open_from').val()
+            let $sOpenTo = $('#open_to').val()
             const data = {
                 name: $sName,
                 photo: $sPhoto,
@@ -68,6 +77,8 @@
                     data: {
                         name: $sName,
                         image: $sPhoto,
+                        open_from: $sOpenFrom,
+                        open_to: $sOpenTo,
                         lat: lat,
                         lng: lng,
                     },
